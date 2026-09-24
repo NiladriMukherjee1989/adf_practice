@@ -1,0 +1,40 @@
+{
+	"name": "PL_ADF_PRACTICE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup_Customer",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select * from dbo.customers",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_AZURE_SQL",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table": "customers"
+						}
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-09-23T22:29:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

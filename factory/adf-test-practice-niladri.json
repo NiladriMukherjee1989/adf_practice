@@ -1,0 +1,15 @@
+{
+	"name": "adf-test-practice-niladri",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7bbc60eb-9b34-45fe-86cf-63786d41c6aa",
+		"tenantId": "7d84783f-94b5-4214-b107-914936a0df81"
+	}
+}

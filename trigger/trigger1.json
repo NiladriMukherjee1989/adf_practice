@@ -1,0 +1,28 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_COPY_FILES",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"source_file": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/LZ/",
+			"blobPathEndsWith": "txt",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/2add5b7e-e6f6-4f98-a83d-ea533c86d98c/resourceGroups/adf_practice_resource_group/providers/Microsoft.Storage/storageAccounts/demostroageniladri",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

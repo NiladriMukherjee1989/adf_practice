@@ -1,0 +1,85 @@
+{
+	"name": "PL_FOREACH_DEMO",
+	"properties": {
+		"activities": [
+			{
+				"name": "List Source Tables",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select table_name from metadata.table_list",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_AZURE_SQL",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "abc",
+							"table": "abc"
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach Ingest in Loop",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "List Source Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('List Source Tables').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 2,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_ADF_COPY_DATA",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"table_name": {
+										"value": "@item().table_name",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-09-24T14:46:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,12 @@
+{
+	"name": "LS_AZURE_STORAGE_ACCOUNT",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://demostroageniladri.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDU3QjNGNEFDLTI5ODktNDI0NC05ODg3LUY0MzQ0REFBRjk0N18xMzEzNzY4OC01MTk1LTRhOTgtYTgxYS04MmUzMzc0MjIzZjAiDQp9"
+		}
+	}
+}
