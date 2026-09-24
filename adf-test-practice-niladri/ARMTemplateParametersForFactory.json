@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-test-practice-niladri"
+		},
+		"LS_AZURE_STORAGE_ACCOUNT_accountKey": {
+			"value": ""
+		},
+		"LZ_AZURE_SQL_password": {
+			"value": ""
+		},
+		"LS_AZURE_STORAGE_ACCOUNT_properties_typeProperties_url": {
+			"value": "https://demostroageniladri.dfs.core.windows.net/"
+		},
+		"LZ_AZURE_SQL_properties_typeProperties_server": {
+			"value": "sql-server-practice-niladri.database.windows.net"
+		},
+		"LZ_AZURE_SQL_properties_typeProperties_database": {
+			"value": "sql-db-practice"
+		},
+		"LZ_AZURE_SQL_properties_typeProperties_userName": {
+			"value": "niladri_mukherjee"
+		},
+		"FILE_BASED_TRIGGER_properties_typeProperties_scope": {
+			"value": "/subscriptions/2add5b7e-e6f6-4f98-a83d-ea533c86d98c/resourceGroups/adf_practice_resource_group/providers/Microsoft.Storage/storageAccounts/demostroageniladri"
+		},
+		"trigger1_properties_PL_COPY_FILES_parameters_source_file": {
+			"value": "@triggerBody().fileName"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/2add5b7e-e6f6-4f98-a83d-ea533c86d98c/resourceGroups/adf_practice_resource_group/providers/Microsoft.Storage/storageAccounts/demostroageniladri"
+		}
+	}
+}
